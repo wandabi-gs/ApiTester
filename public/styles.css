@@ -1,0 +1,242 @@
+:root {
+  --bg: #0f1115;
+  --panel: #171a21;
+  --border: #2a2e38;
+  --text: #e4e6eb;
+  --muted: #8b90a0;
+  --accent: #4f8cff;
+  --danger: #e5534b;
+  font-family: -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  height: 100vh;
+}
+
+.sidebar {
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.main {
+  padding: 16px 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 8px;
+}
+
+th {
+  text-align: left;
+  font-size: 11px;
+  color: var(--muted);
+  padding: 2px 4px;
+}
+
+td {
+  padding: 2px;
+}
+
+input[type="text"], input[type="password"], textarea, select {
+  background: #0f1115;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  width: 100%;
+}
+
+table input { font-size: 12px; padding: 4px 6px; }
+
+textarea {
+  width: 100%;
+  min-height: 220px;
+  font-family: "SF Mono", Consolas, monospace;
+  resize: vertical;
+}
+
+button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+button.secondary {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+button.danger {
+  background: transparent;
+  border: 1px solid var(--danger);
+  color: var(--danger);
+}
+
+button.icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  padding: 2px 6px;
+  font-size: 14px;
+}
+
+.request-bar {
+  display: flex;
+  gap: 8px;
+}
+
+.request-bar select {
+  width: 110px;
+  flex: none;
+}
+
+.request-bar input {
+  flex: 1;
+}
+
+.secondary-bar input {
+  flex: 1;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab-btn {
+  background: transparent;
+  color: var(--muted);
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 8px 12px;
+  border-radius: 0;
+}
+
+.tab-btn.active {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+.response {
+  margin-top: 8px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.response-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.meta {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.extract {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+#responseBody, #responseHeaders {
+  background: #0f1115;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: "SF Mono", Consolas, monospace;
+  font-size: 12px;
+  overflow: auto;
+}
+
+#responseBody {
+  flex: 1;
+}
+
+#requestList {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+#requestList li {
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+}
+
+#requestList li:hover {
+  background: #1e222c;
+}
+
+#requestList li.active {
+  background: #1e2a44;
+  color: var(--accent);
+}
+
+#requestList .method-tag {
+  color: var(--muted);
+  font-weight: 600;
+  width: 48px;
+  flex: none;
+}
+
+.status-ok { color: #3fbf6f; }
+.status-err { color: var(--danger); }

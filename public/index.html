@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>NCBA API Tester</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <section class="panel">
+        <h2>Variables</h2>
+        <p class="hint">Use <code>{{name}}</code> in URL, headers or body.</p>
+        <table id="varsTable">
+          <thead><tr><th>Key</th><th>Value</th><th>Secret</th><th></th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <button id="addVarBtn" class="secondary">+ Add variable</button>
+      </section>
+
+      <section class="panel">
+        <h2>Saved Requests</h2>
+        <ul id="requestList"></ul>
+        <button id="newRequestBtn" class="secondary">+ New request</button>
+      </section>
+    </aside>
+
+    <main class="main">
+      <div class="request-bar">
+        <select id="method">
+          <option>GET</option>
+          <option>POST</option>
+          <option>PUT</option>
+          <option>PATCH</option>
+          <option>DELETE</option>
+        </select>
+        <input id="url" type="text" placeholder="{{base_url}}/api/v1/login" />
+        <button id="sendBtn">Send</button>
+      </div>
+      <div class="request-bar secondary-bar">
+        <input id="requestName" type="text" placeholder="Request name" />
+        <button id="saveBtn" class="secondary">Save</button>
+        <button id="deleteBtn" class="danger">Delete</button>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="headers">Headers</button>
+        <button class="tab-btn" data-tab="body">Body</button>
+      </div>
+
+      <div class="tab-content" id="headersTab">
+        <table id="headersTable">
+          <thead><tr><th>Key</th><th>Value</th><th></th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <button id="addHeaderBtn" class="secondary">+ Add header</button>
+      </div>
+
+      <div class="tab-content" id="bodyTab" hidden>
+        <textarea id="bodyText" placeholder='{"example": "{{some_var}}"}'></textarea>
+      </div>
+
+      <section class="response">
+        <div class="response-header">
+          <h2>Response</h2>
+          <span id="respMeta" class="meta"></span>
+        </div>
+
+        <div class="extract">
+          <input id="extractPath" type="text" placeholder="response path e.g. data.token" />
+          <input id="extractVarName" type="text" placeholder="save as variable e.g. auth_token" />
+          <button id="extractBtn" class="secondary">Save to variable</button>
+        </div>
+
+        <details id="respHeadersDetails">
+          <summary>Response headers</summary>
+          <pre id="responseHeaders"></pre>
+        </details>
+        <pre id="responseBody">Send a request to see the response.</pre>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
